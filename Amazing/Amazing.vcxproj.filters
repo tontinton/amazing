@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Delivery">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Delivery\Loggers">
+      <UniqueIdentifier>{c6e8e2d4-fa00-4886-a26c-02133bde48dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Loggers\ColorConsoleLogger">
+      <UniqueIdentifier>{fcc2a564-d379-4acb-9ee3-ad08a3618669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Injectors">
+      <UniqueIdentifier>{2dd1d784-b22b-4fbf-b10d-28f39aed228a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Injectors\DllInjector">
+      <UniqueIdentifier>{ad69ca12-253f-44a1-94e1-5f12d1c6936a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Exceptions">
+      <UniqueIdentifier>{30d0b1a9-6438-41ff-8a6a-fa4cf44e1e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Guards">
+      <UniqueIdentifier>{941dbd1c-ad12-42c8-a281-78565573c27e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Exceptions\DeliveryException">
+      <UniqueIdentifier>{7f215361-e893-4f98-8ffe-e3f092831289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Exceptions\WinApiException">
+      <UniqueIdentifier>{abec3315-5da2-4f5f-8495-d60e5a0b479b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Guards\HandleGuards">
+      <UniqueIdentifier>{a970cca6-8f0d-4235-92d5-731fe83d472c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Guards\HandleGuards\ProcessGuard">
+      <UniqueIdentifier>{d49f6510-45d1-405e-9ece-078941fed632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Guards\HandleGuards\SnapshotGuard">
+      <UniqueIdentifier>{72ea995a-05a4-4f27-ab7a-ec7deb562bb1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Delivery</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorConsoleLogger.cpp">
+      <Filter>Delivery\Loggers\ColorConsoleLogger</Filter>
+    </ClCompile>
+    <ClCompile Include="DllInjector.cpp">
+      <Filter>Delivery\Injectors\DllInjector</Filter>
+    </ClCompile>
+    <ClCompile Include="DeliveryException.cpp">
+      <Filter>Delivery\Exceptions\DeliveryException</Filter>
+    </ClCompile>
+    <ClCompile Include="WinApiException.cpp">
+      <Filter>Delivery\Exceptions\WinApiException</Filter>
+    </ClCompile>
+    <ClCompile Include="SnapshotGuard.cpp">
+      <Filter>Delivery\Guards\HandleGuards\SnapshotGuard</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessGuard.cpp">
+      <Filter>Delivery\Guards\HandleGuards\ProcessGuard</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ILogger.h">
+      <Filter>Delivery\Loggers</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorConsoleLogger.h">
+      <Filter>Delivery\Loggers\ColorConsoleLogger</Filter>
+    </ClInclude>
+    <ClInclude Include="IInjector.h">
+      <Filter>Delivery\Injectors</Filter>
+    </ClInclude>
+    <ClInclude Include="DllInjector.h">
+      <Filter>Delivery\Injectors\DllInjector</Filter>
+    </ClInclude>
+    <ClInclude Include="DeliveryException.h">
+      <Filter>Delivery\Exceptions\DeliveryException</Filter>
+    </ClInclude>
+    <ClInclude Include="WinApiException.h">
+      <Filter>Delivery\Exceptions\WinApiException</Filter>
+    </ClInclude>
+    <ClInclude Include="SnapshotGuard.h">
+      <Filter>Delivery\Guards\HandleGuards\SnapshotGuard</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessGuard.h">
+      <Filter>Delivery\Guards\HandleGuards\ProcessGuard</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorCodes.h">
+      <Filter>Delivery</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
