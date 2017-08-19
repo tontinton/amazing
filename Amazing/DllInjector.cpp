@@ -1,7 +1,7 @@
 #include "DllInjector.h"
 #include <windows.h>
 #include <TlHelp32.h>
-#include "DeliveryException.h"
+#include "AmazingException.h"
 #include "WinApiException.h"
 #include "SnapshotGuard.h"
 #include "ProcessGuard.h"
@@ -39,7 +39,7 @@ DllInjector::DllInjector(const std::string& processName)
 	while (Process32Next(*processes, &processStruct));
 
 	if (!foundProcess) {
-		throw DeliveryException("Could not find the process: " + processName);
+		throw AmazingException("Could not find the process: " + processName);
 	}
 	m_logger.success("Found the process: " + processName + ", with PID of: " + std::to_string(processStruct.th32ProcessID));
 

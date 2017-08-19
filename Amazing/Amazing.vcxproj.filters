@@ -27,9 +27,6 @@
     <Filter Include="Delivery\Guards">
       <UniqueIdentifier>{941dbd1c-ad12-42c8-a281-78565573c27e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Delivery\Exceptions\DeliveryException">
-      <UniqueIdentifier>{7f215361-e893-4f98-8ffe-e3f092831289}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Delivery\Exceptions\WinApiException">
       <UniqueIdentifier>{abec3315-5da2-4f5f-8495-d60e5a0b479b}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,9 @@
     <Filter Include="Delivery\Guards\HandleGuards\RemoteThreadGuard">
       <UniqueIdentifier>{1b6d0d61-27f0-42fd-b037-6d08da76e4e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Delivery\Exceptions\AmazingException">
+      <UniqueIdentifier>{7f215361-e893-4f98-8ffe-e3f092831289}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -61,9 +61,6 @@
     </ClCompile>
     <ClCompile Include="DllInjector.cpp">
       <Filter>Delivery\Injectors\DllInjector</Filter>
-    </ClCompile>
-    <ClCompile Include="DeliveryException.cpp">
-      <Filter>Delivery\Exceptions\DeliveryException</Filter>
     </ClCompile>
     <ClCompile Include="WinApiException.cpp">
       <Filter>Delivery\Exceptions\WinApiException</Filter>
@@ -80,6 +77,9 @@
     <ClCompile Include="RemoteThreadGuard.cpp">
       <Filter>Delivery\Guards\HandleGuards\RemoteThreadGuard</Filter>
     </ClCompile>
+    <ClCompile Include="AmazingException.cpp">
+      <Filter>Delivery\Exceptions\AmazingException</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ILogger.h">
@@ -93,9 +93,6 @@
     </ClInclude>
     <ClInclude Include="DllInjector.h">
       <Filter>Delivery\Injectors\DllInjector</Filter>
-    </ClInclude>
-    <ClInclude Include="DeliveryException.h">
-      <Filter>Delivery\Exceptions\DeliveryException</Filter>
     </ClInclude>
     <ClInclude Include="WinApiException.h">
       <Filter>Delivery\Exceptions\WinApiException</Filter>
@@ -114,6 +111,9 @@
     </ClInclude>
     <ClInclude Include="RemoteThreadGuard.h">
       <Filter>Delivery\Guards\HandleGuards\RemoteThreadGuard</Filter>
+    </ClInclude>
+    <ClInclude Include="AmazingException.h">
+      <Filter>Delivery\Exceptions\AmazingException</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

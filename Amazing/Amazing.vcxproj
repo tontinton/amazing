@@ -116,7 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ColorConsoleLogger.cpp" />
-    <ClCompile Include="DeliveryException.cpp" />
+    <ClCompile Include="AmazingException.cpp" />
     <ClCompile Include="DllInjector.cpp" />
     <ClCompile Include="ProcessGuard.cpp" />
     <ClCompile Include="RemoteMemoryGuard.cpp" />
@@ -127,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColorConsoleLogger.h" />
-    <ClInclude Include="DeliveryException.h" />
+    <ClInclude Include="AmazingException.h" />
     <ClInclude Include="DllInjector.h" />
     <ClInclude Include="ErrorCodes.h" />
     <ClInclude Include="ProcessGuard.h" />

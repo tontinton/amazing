@@ -3,7 +3,7 @@
 #include "ColorConsoleLogger.h"
 #include "IInjector.h"
 #include "DllInjector.h"
-#include "DeliveryException.h"
+#include "AmazingException.h"
 #include "WinApiException.h"
 
 
@@ -19,7 +19,7 @@ int main(void)
 		logger.error(exception.what());
 		return ERROR_WINAPI_EXCEPTION;
 	}
-	catch (const DeliveryException& exception) {
+	catch (const AmazingException& exception) {
 		logger.error(exception.what());
 		return ERROR_DELIVERY_EXCEPTION;
 	}
