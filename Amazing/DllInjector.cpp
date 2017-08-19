@@ -8,7 +8,6 @@
 #include "ColorConsoleLogger.h"
 #include "RemoteMemoryGuard.h"
 #include "RemoteThreadGuard.h"
-#include <libloaderapi.h>
 
 
 LPVOID LET_WINDOWS_DECIDE_ADDRESS = NULL;
