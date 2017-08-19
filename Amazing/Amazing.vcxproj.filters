@@ -42,6 +42,15 @@
     <Filter Include="Delivery\Guards\HandleGuards\SnapshotGuard">
       <UniqueIdentifier>{72ea995a-05a4-4f27-ab7a-ec7deb562bb1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Delivery\Guards\MemoryGuards">
+      <UniqueIdentifier>{f3c84db5-4c9f-4ce6-a041-bebc933943d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Guards\MemoryGuards\RemoteMemoryGuard">
+      <UniqueIdentifier>{63c7c8a4-d4de-49a2-95d7-6e1d77382494}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Delivery\Guards\HandleGuards\RemoteThreadGuard">
+      <UniqueIdentifier>{1b6d0d61-27f0-42fd-b037-6d08da76e4e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="ProcessGuard.cpp">
       <Filter>Delivery\Guards\HandleGuards\ProcessGuard</Filter>
+    </ClCompile>
+    <ClCompile Include="RemoteMemoryGuard.cpp">
+      <Filter>Delivery\Guards\MemoryGuards\RemoteMemoryGuard</Filter>
+    </ClCompile>
+    <ClCompile Include="RemoteThreadGuard.cpp">
+      <Filter>Delivery\Guards\HandleGuards\RemoteThreadGuard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="ErrorCodes.h">
       <Filter>Delivery</Filter>
+    </ClInclude>
+    <ClInclude Include="RemoteMemoryGuard.h">
+      <Filter>Delivery\Guards\MemoryGuards\RemoteMemoryGuard</Filter>
+    </ClInclude>
+    <ClInclude Include="RemoteThreadGuard.h">
+      <Filter>Delivery\Guards\HandleGuards\RemoteThreadGuard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

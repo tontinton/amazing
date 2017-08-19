@@ -19,14 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{531F6C89-0407-43F3-9009-A790CB2CE438}</ProjectGuid>
-    <RootNamespace>Amazing</RootNamespace>
+    <ProjectGuid>{A5C5CA67-E146-4E76-ACD7-9A5227FFBA2D}</ProjectGuid>
+    <RootNamespace>Package</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>Delivery</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -77,9 +76,6 @@
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,28 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ColorConsoleLogger.cpp" />
-    <ClCompile Include="DeliveryException.cpp" />
-    <ClCompile Include="DllInjector.cpp" />
-    <ClCompile Include="ProcessGuard.cpp" />
-    <ClCompile Include="RemoteMemoryGuard.cpp" />
-    <ClCompile Include="RemoteThreadGuard.cpp" />
-    <ClCompile Include="SnapshotGuard.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="WinApiException.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ColorConsoleLogger.h" />
-    <ClInclude Include="DeliveryException.h" />
-    <ClInclude Include="DllInjector.h" />
-    <ClInclude Include="ErrorCodes.h" />
-    <ClInclude Include="ProcessGuard.h" />
-    <ClInclude Include="RemoteMemoryGuard.h" />
-    <ClInclude Include="RemoteThreadGuard.h" />
-    <ClInclude Include="SnapshotGuard.h" />
-    <ClInclude Include="IInjector.h" />
-    <ClInclude Include="ILogger.h" />
-    <ClInclude Include="WinApiException.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

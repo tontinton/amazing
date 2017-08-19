@@ -13,7 +13,7 @@ int main(void)
 
 	try {
 		std::unique_ptr<IInjector> injector = std::make_unique<DllInjector>("python.exe");
-		injector->inject("Path to dll");
+		injector->inject("C:\\Users\\Tony Solomonik\\Documents\\visual studio 2015\\Projects\\Amazing\\Debug\\Package.dll");
 	}
 	catch (const WinApiException& exception) {
 		logger.error(exception.what());
@@ -28,5 +28,6 @@ int main(void)
 		return ERROR_UNKNOWN_EXCEPTION;
 	}
 
+	logger.success("Everything worked :)");
 	return PROGRAM_SUCCESS;
 }

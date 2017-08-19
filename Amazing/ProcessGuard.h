@@ -1,10 +1,11 @@
 #pragma once
 #include <windows.h>
+#include "ILogger.h"
 
 class ProcessGuard
 {
 public:
-	explicit ProcessGuard(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwProcessId);
+	ProcessGuard(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwProcessId);
 	~ProcessGuard();
 
 	ProcessGuard(ProcessGuard const&) = delete;
@@ -14,4 +15,6 @@ public:
 
 private:
 	HANDLE m_handle;
+
+	ILogger& m_logger;
 };
