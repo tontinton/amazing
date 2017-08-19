@@ -12,7 +12,7 @@ int main(void)
 	auto& logger = ColorConsoleLogger::getInstance();
 
 	try {
-		std::unique_ptr<IInjector> injector = std::make_unique<DllInjector>("python.exe");
+		std::unique_ptr<IInjector> injector = std::make_unique<DllInjector>("csgo.exe");
 		injector->inject("C:\\Users\\Tony Solomonik\\Documents\\visual studio 2015\\Projects\\Amazing\\Debug\\Package.dll");
 	}
 	catch (const WinApiException& exception) {

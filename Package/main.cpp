@@ -6,7 +6,13 @@
 
 void WINAPI openSurprise()
 {
-    MessageBox(NULL, "Success", "Package", MB_OK);
+    MessageBox(NULL, "Injected", "Package", MB_OK);
+
+    while (!GetModuleHandle("client.dll") || !GetModuleHandle("engine.dll")) {
+        Sleep(1000);
+    }
+    MessageBox(NULL, "Starting", "Package", MB_OK);
+
 	try {
 		Interfaces::init();
 	}
@@ -19,6 +25,7 @@ void WINAPI openSurprise()
 	catch (...) {
 		MessageBox(NULL, "Unkown exception", "Package", MB_OK);
 	}
+    MessageBox(NULL, "Finished", "Package", MB_OK);
 }
 
 
