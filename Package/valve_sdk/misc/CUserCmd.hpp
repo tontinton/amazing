@@ -3,6 +3,7 @@
 #include "checksum_crc.hpp"
 #include "checksum_md5.hpp"
 #include "../Math/QAngle.hpp"
+#include "../math/Vector.hpp"
 
 #define IN_ATTACK  (1 << 0)
 #define IN_JUMP   (1 << 1)

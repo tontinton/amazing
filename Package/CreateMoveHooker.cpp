@@ -48,10 +48,10 @@ void __stdcall CreateMoveHooker::CreateMove(int sequence_number, float input_sam
         auto userCommand = Interfaces::g_input->GetUserCmd(sequence_number);
         auto verifiedUserCommand = Interfaces::g_input->GetVerifiedCmd(sequence_number);
 
-		if (!userCommand || !userCommand->command_number) {
+        if (!userCommand || !userCommand->command_number) {
             m_logger.warning("The user command interface is not initialized");
-			return;
-		}
+            return;
+        }
 
         m_bunnyHopper.hop(userCommand);
 

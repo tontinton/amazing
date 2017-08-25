@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Misc/CUserCmd.hpp"
+#include "../math/Vector.hpp"
 
 #define MULTIPLAYER_BACKUP 150
 

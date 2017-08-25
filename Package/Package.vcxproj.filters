@@ -122,15 +122,6 @@
     <ClCompile Include="BunnyHopper.cpp">
       <Filter>Package\Presents\BunnyHop</Filter>
     </ClCompile>
-    <ClCompile Include="valve_sdk\csgostructs.cpp">
-      <Filter>Package\Sdk</Filter>
-    </ClCompile>
-    <ClCompile Include="valve_sdk\netvars.cpp">
-      <Filter>Package\Sdk</Filter>
-    </ClCompile>
-    <ClCompile Include="valve_sdk\helpers\math.cpp">
-      <Filter>Package\Sdk</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="valve_sdk\misc\BaseHandle.hpp">
@@ -334,22 +325,10 @@
     <ClInclude Include="BunnyHopper.h">
       <Filter>Package\Presents\BunnyHop</Filter>
     </ClInclude>
-    <ClInclude Include="C_LocalPlayer.hpp">
-      <Filter>Package\Sdk</Filter>
-    </ClInclude>
     <ClInclude Include="Interfaces.h">
       <Filter>Package\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="valve_sdk\csgostructs.hpp">
-      <Filter>Package\Sdk</Filter>
-    </ClInclude>
-    <ClInclude Include="valve_sdk\netvars.hpp">
-      <Filter>Package\Sdk</Filter>
-    </ClInclude>
     <ClInclude Include="valve_sdk\singleton.hpp">
-      <Filter>Package\Sdk</Filter>
-    </ClInclude>
-    <ClInclude Include="valve_sdk\helpers\math.hpp">
       <Filter>Package\Sdk</Filter>
     </ClInclude>
   </ItemGroup>

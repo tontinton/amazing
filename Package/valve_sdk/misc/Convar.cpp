@@ -14,15 +14,13 @@ static int s_nDLLIdentifier = -1;
 static int s_nCVarFlag = 0;
 static bool s_bRegistered = false;
 
-ICvar* g_CVar = Interfaces::g_convar;
-
 class CDefaultAccessor : public IConCommandBaseAccessor
 {
 public:
     virtual bool RegisterConCommandBase(ConCommandBase *pVar)
     {
         // Link to engine's list instead
-        g_CVar->RegisterConCommand(pVar);
+        Interfaces::g_convar->RegisterConCommand(pVar);
         return true;
     }
 };
@@ -34,13 +32,13 @@ static CDefaultAccessor s_DefaultAccessor;
 //-----------------------------------------------------------------------------
 void ConVar_Register(int nCVarFlag, IConCommandBaseAccessor *pAccessor)
 {
-    if(!g_CVar || s_bRegistered)
+    if(!Interfaces::g_convar || s_bRegistered)
         return;
 
     assert(s_nDLLIdentifier < 0);
     s_bRegistered = true;
     s_nCVarFlag = nCVarFlag;
-    s_nDLLIdentifier = g_CVar->AllocateDLLIdentifier();
+    s_nDLLIdentifier = Interfaces::g_convar->AllocateDLLIdentifier();
 
     ConCommandBase *pCur, *pNext;
 
@@ -62,11 +60,11 @@ void ConVar_Register(int nCVarFlag, IConCommandBaseAccessor *pAccessor)
 
 void ConVar_Unregister()
 {
-    if(!g_CVar || !s_bRegistered)
+    if(!Interfaces::g_convar || !s_bRegistered)
         return;
 
     assert(s_nDLLIdentifier >= 0);
-    g_CVar->UnregisterConCommands(s_nDLLIdentifier);
+    Interfaces::g_convar->UnregisterConCommands(s_nDLLIdentifier);
     s_nDLLIdentifier = -1;
     s_bRegistered = false;
 }
@@ -130,8 +128,8 @@ void ConCommandBase::Init()
 
 void ConCommandBase::Shutdown()
 {
-    if(g_CVar) {
-        g_CVar->UnregisterConCommand(this);
+    if(Interfaces::g_convar) {
+        Interfaces::g_convar->UnregisterConCommand(this);
     }
 }
 
@@ -603,8 +601,8 @@ void ConVar::ChangeStringValue(const char *tempVal, float flOldValue)
         m_fnChangeCallbacks[i](this, pszOldValue, flOldValue);
     }
 
-    if(g_CVar)
-        g_CVar->CallGlobalChangeCallbacks(this, pszOldValue, flOldValue);
+    if(Interfaces::g_convar)
+        Interfaces::g_convar->CallGlobalChangeCallbacks(this, pszOldValue, flOldValue);
 }
 
 bool ConVar::ClampValue(float& value)

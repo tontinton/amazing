@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Math/Vector4D.hpp"
+#include "../Misc/Enums.hpp"
 
 #pragma region MASKS
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "BaseHandle.hpp"
-#include "../sdk.hpp"
+#include "../../Interfaces.h"
 
 // -------------------------------------------------------------------------------------------------- //
 // Game-code CBaseHandle implementation.
@@ -9,7 +9,7 @@
 
 inline IHandleEntity* CBaseHandle::Get() const
 {
-    return g_EntityList->GetClientEntityFromHandle(*this);
+    return Interfaces::g_entityList->GetClientEntityFromHandle(*this);
 }
 
 

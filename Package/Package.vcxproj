@@ -74,7 +74,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -121,8 +121,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryProtectGuard.cpp" />
     <ClCompile Include="Surpriser.cpp" />
-    <ClCompile Include="valve_sdk\csgostructs.cpp" />
-    <ClCompile Include="valve_sdk\helpers\math.cpp" />
     <ClCompile Include="valve_sdk\math\Vector2D.cpp" />
     <ClCompile Include="valve_sdk\math\Vector4D.cpp" />
     <ClCompile Include="valve_sdk\math\VMatrix.cpp" />
@@ -133,7 +131,6 @@
     <ClCompile Include="valve_sdk\misc\Convar.cpp" />
     <ClCompile Include="valve_sdk\misc\UtlBuffer.cpp" />
     <ClCompile Include="valve_sdk\misc\UtlString.cpp" />
-    <ClCompile Include="valve_sdk\netvars.cpp" />
     <ClCompile Include="WinApiException.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,7 +138,6 @@
     <ClInclude Include="BunnyHopper.h" />
     <ClInclude Include="ConsoleLogger.h" />
     <ClInclude Include="CreateMoveHooker.h" />
-    <ClInclude Include="C_LocalPlayer.hpp" />
     <ClInclude Include="InterfaceHooker.h" />
     <ClInclude Include="IHooker.h" />
     <ClInclude Include="ILogger.h" />
@@ -149,8 +145,6 @@
     <ClInclude Include="LoggerHelper.h" />
     <ClInclude Include="MemoryProtectGuard.h" />
     <ClInclude Include="Surpriser.h" />
-    <ClInclude Include="valve_sdk\csgostructs.hpp" />
-    <ClInclude Include="valve_sdk\helpers\math.hpp" />
     <ClInclude Include="valve_sdk\interfaces\CClientState.hpp" />
     <ClInclude Include="valve_sdk\interfaces\CInput.hpp" />
     <ClInclude Include="valve_sdk\interfaces\IAppSystem.hpp" />
@@ -207,7 +201,6 @@
     <ClInclude Include="valve_sdk\misc\UtlString.hpp" />
     <ClInclude Include="valve_sdk\misc\UtlVector.hpp" />
     <ClInclude Include="valve_sdk\misc\vfunc.hpp" />
-    <ClInclude Include="valve_sdk\netvars.hpp" />
     <ClInclude Include="valve_sdk\singleton.hpp" />
     <ClInclude Include="WinApiException.h" />
   </ItemGroup>

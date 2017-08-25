@@ -38,10 +38,10 @@ typedef void(*pfnDemoCustomDataCallback)(uint8_t *pData, size_t iSize);
 typedef struct player_info_s
 {
     __int64         unknown;            //0x0000 
-    union
+    union a
     {
       __int64       steamID64;          //0x0008 - SteamID64
-      struct
+      struct b
       {
         __int32     xuid_low;
         __int32     xuid_high;

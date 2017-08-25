@@ -1,6 +1,6 @@
 #include "BunnyHopper.h"
-#include "valve_sdk/Misc/Enums.hpp"
 #include "Interfaces.h"
+#include "valve_sdk//Misc/Enums.hpp"
 
 BunnyHopper::BunnyHopper()
     : m_jumpedLastTick(false),

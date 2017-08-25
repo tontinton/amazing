@@ -3,6 +3,8 @@
 #include "../Math/QAngle.hpp"
 #include "../Misc/CUserCmd.hpp"
 #include "IMoveHelper.hpp"
+#include "../math/Vector.hpp"
+#include "../misc/vfunc.hpp"
 
 class CMoveData
 {

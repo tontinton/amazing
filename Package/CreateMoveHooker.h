@@ -6,13 +6,13 @@
 class CreateMoveHooker
 {
 public:
-	static IHooker& getInstance();
-
+    static IHooker& getInstance();
+    
 private:
-	static InterfaceHooker m_hooker;
-	static ILogger& m_logger;
+    static InterfaceHooker m_hooker;
+    static ILogger& m_logger;
     static BunnyHopper m_bunnyHopper;
 
-    static __declspec(naked) void __stdcall CreateMoveProxy(int sequence_number, float input_sample_frametime, bool active);
+    static void __stdcall CreateMoveProxy(int sequence_number, float input_sample_frametime, bool active);
     static void __stdcall CreateMove(int sequence_number, float input_sample_frametime, bool active, bool& bSendPacket);
 };
