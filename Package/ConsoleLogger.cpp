@@ -18,12 +18,14 @@ ConsoleLogger::ConsoleLogger()
     m_old_stderr = SafeGetStdHandle(STD_ERROR_HANDLE);
     m_old_stdin = SafeGetStdHandle(STD_INPUT_HANDLE);
 
-    if (!AllocConsole()) {
-        throw WinApiException("Allocating a new console has failed");
-    }
-
     if (!AttachConsole(GetCurrentProcessId())) {
-        throw WinApiException("Attaching a new console has failed");
+        if (ERROR_ACCESS_DENIED == GetLastError()) {
+            FreeConsole();
+
+            if (!AllocConsole()) {
+                throw WinApiException("Allocating a new console has failed");
+            }
+        }
     }
 
     m_new_stdout = SafeGetStdHandle(STD_OUTPUT_HANDLE);
@@ -61,28 +63,28 @@ ILogger& ConsoleLogger::getInstance()
     return instance;
 }
 
-void ConsoleLogger::printMessage(const std::string& message) const
+void ConsoleLogger::print(const std::string& message) const
 {
     auto buffer = message.c_str();
-    WriteConsoleA(m_new_stdout, buffer, static_cast<DWORD>(strlen(buffer)), nullptr, nullptr);
+    WriteConsole(m_new_stdout, buffer, static_cast<DWORD>(strlen(buffer)), nullptr, nullptr);
 }
 
 void ConsoleLogger::success(const std::string& message)
 {
-    printMessage("[+]" + message);
+    print("[+] " + message + "\n");
 }
 
 void ConsoleLogger::log(const std::string& message)
 {
-    printMessage("[l]" + message);
+    print("[l] " + message + "\n");
 }
 
 void ConsoleLogger::warning(const std::string& message)
 {
-    printMessage("[?]" + message);
+    print("[?] " + message + "\n");
 }
 
 void ConsoleLogger::error(const std::string& message)
 {
-    printMessage("[-]" + message);
+    print("[-] " + message + "\n");
 }

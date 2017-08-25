@@ -11,7 +11,7 @@ public:
 
     static ILogger& getInstance();
 
-    void printMessage(const std::string& message) const;
+    void print(const std::string& message) const;
 
 	void success(const std::string& message) override;
 	void log(const std::string& message) override;

@@ -30,11 +30,11 @@
     <Filter Include="Package\Loggers">
       <UniqueIdentifier>{ae9e93cf-cbb7-4dc3-afcb-1f8638650619}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Package\Loggers\ConsoleLogger">
-      <UniqueIdentifier>{f05004d4-9fbf-4ded-95a7-4ce2cfe2e5ec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Package\Surpriser">
       <UniqueIdentifier>{eee844e6-5121-4b3d-9cd8-6529e500cf0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Loggers\ConsoleLogger">
+      <UniqueIdentifier>{f05004d4-9fbf-4ded-95a7-4ce2cfe2e5ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,14 +80,14 @@
     <ClCompile Include="WinApiException.cpp">
       <Filter>Package\Exceptions\WinApiException</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleLogger.cpp">
-      <Filter>Package\Loggers\ConsoleLogger</Filter>
-    </ClCompile>
     <ClCompile Include="Surpriser.cpp">
       <Filter>Package\Surpriser</Filter>
     </ClCompile>
     <ClCompile Include="LoggerHelper.cpp">
       <Filter>Package\Loggers</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleLogger.cpp">
+      <Filter>Package\Loggers\ConsoleLogger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -271,14 +271,14 @@
     <ClInclude Include="ILogger.h">
       <Filter>Package\Loggers</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleLogger.h">
-      <Filter>Package\Loggers\ConsoleLogger</Filter>
-    </ClInclude>
     <ClInclude Include="Surpriser.h">
       <Filter>Package\Surpriser</Filter>
     </ClInclude>
     <ClInclude Include="LoggerHelper.h">
       <Filter>Package\Loggers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleLogger.h">
+      <Filter>Package\Loggers\ConsoleLogger</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
