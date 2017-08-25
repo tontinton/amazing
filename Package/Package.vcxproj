@@ -112,8 +112,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AmazingException.cpp" />
+    <ClCompile Include="ConsoleLogger.cpp" />
     <ClCompile Include="Interfaces.cpp" />
+    <ClCompile Include="LoggerHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Surpriser.cpp" />
     <ClCompile Include="valve_sdk\math\Vector2D.cpp" />
     <ClCompile Include="valve_sdk\math\Vector4D.cpp" />
     <ClCompile Include="valve_sdk\math\VMatrix.cpp" />
@@ -128,7 +131,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmazingException.h" />
+    <ClInclude Include="ConsoleLogger.h" />
+    <ClInclude Include="ILogger.h" />
     <ClInclude Include="Interfaces.h" />
+    <ClInclude Include="LoggerHelper.h" />
+    <ClInclude Include="Surpriser.h" />
     <ClInclude Include="valve_sdk\interfaces\CClientState.hpp" />
     <ClInclude Include="valve_sdk\interfaces\CInput.hpp" />
     <ClInclude Include="valve_sdk\interfaces\IAppSystem.hpp" />

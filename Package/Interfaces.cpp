@@ -21,16 +21,16 @@ void Interfaces::init()
 }
 
 template <typename T>
-T* Interfaces::create(std::string module, std::string interfaceName)
+T* Interfaces::create(const std::string& module, const std::string& interfaceName)
 {
 	auto moduleHandle = GetModuleHandle(module.c_str());
 	if (!moduleHandle) {
-		throw WinApiException("Getting module handle of an interface failed with error code: " + std::to_string(GetLastError()));
+		throw WinApiException("Getting module handle of an interface failed");
 	}
 
 	auto createInterfaceAddress = GetProcAddress(moduleHandle, CREATE_INTERFACE);
 	if (!createInterfaceAddress) {
-		throw WinApiException("Getting the address to the create interface function failed with error code: " + std::to_string(GetLastError()));
+		throw WinApiException("Getting the address to the create interface function failed");
 	}
 
 	auto createInterfaceFunction = reinterpret_cast<CreateInterfaceFn>(createInterfaceAddress);

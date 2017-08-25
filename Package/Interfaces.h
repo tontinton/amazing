@@ -14,5 +14,5 @@ public:
 
 private:
 	template <typename T>
-	static T* create(std::string module, std::string interfaceName);
+	static T* create(const std::string& module, const std::string& interfaceName);
 };
