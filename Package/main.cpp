@@ -22,6 +22,8 @@ void WINAPI openSurprise()
             + ", Message: "
             + LoggerHelper::GetErrorMessage(lastError);
         MessageBox(NULL, message.c_str(), "Package", MB_OK);
+    } catch(...) {
+        MessageBox(NULL, "Unknown Error", "Package", MB_OK);
     }
 }
 

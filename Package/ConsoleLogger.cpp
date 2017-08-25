@@ -18,14 +18,10 @@ ConsoleLogger::ConsoleLogger()
     m_old_stderr = SafeGetStdHandle(STD_ERROR_HANDLE);
     m_old_stdin = SafeGetStdHandle(STD_INPUT_HANDLE);
 
-    if (!AttachConsole(GetCurrentProcessId())) {
-        if (ERROR_ACCESS_DENIED == GetLastError()) {
-            FreeConsole();
+    FreeConsole();
 
-            if (!AllocConsole()) {
-                throw WinApiException("Allocating a new console has failed");
-            }
-        }
+    if (!AllocConsole()) {
+        throw WinApiException("Allocating a new console has failed");
     }
 
     m_new_stdout = SafeGetStdHandle(STD_OUTPUT_HANDLE);

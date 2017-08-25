@@ -2,43 +2,120 @@
 #include <windows.h>
 #include "AmazingException.h"
 #include "WinApiException.h"
+#include <vector>
+#include "valve_sdk/interfaces/IMDLCache.hpp"
 
 
 constexpr char* CREATE_INTERFACE = "CreateInterface";
 
 constexpr char* CLIENT = "client.dll";
+constexpr char* ENGINE = "engine.dll";
+constexpr char* DATA_CACHE = "datacache.dll";
 constexpr char* V_STD_LIB = "vstdlib.dll";
 
 
-IBaseClientDLL*		Interfaces::g_baseClient	= nullptr;
-ICvar*				Interfaces::g_convar		= nullptr;
+IBaseClientDLL* Interfaces::g_baseClient = nullptr;
+IClientEntityList* Interfaces::g_entityList = nullptr;
+ICvar* Interfaces::g_convar = nullptr;
+IVEngineClient* Interfaces::g_engineClient = nullptr;
+IEngineTrace* Interfaces::g_engineTrace = nullptr;
+CInput* Interfaces::g_input = nullptr;
+IVModelInfoClient* Interfaces::g_mdlInfo = nullptr;
+C_LocalPlayer Interfaces::g_player;
 
 
 void Interfaces::init()
 {
-    g_baseClient = create<IBaseClientDLL>(CLIENT, "VClient018");
-	g_convar = create<ICvar>(V_STD_LIB, "VEngineCvar007");
-}
+    auto client = GetModuleHandle(CLIENT);
+    if (!client) {
+        throw WinApiException("Getting module handle of an interface failed");
+    }
 
-template <typename T>
-T* Interfaces::create(const std::string& module, const std::string& interfaceName)
-{
-	auto moduleHandle = GetModuleHandle(module.c_str());
-	if (!moduleHandle) {
+	auto engine = GetModuleHandle(ENGINE);
+	if (!engine) {
 		throw WinApiException("Getting module handle of an interface failed");
 	}
 
-	auto createInterfaceAddress = GetProcAddress(moduleHandle, CREATE_INTERFACE);
-	if (!createInterfaceAddress) {
-		throw WinApiException("Getting the address to the create interface function failed");
-	}
+    auto vstdlib = GetModuleHandle(V_STD_LIB);
+    if (!vstdlib) {
+        throw WinApiException("Getting module handle of an interface failed");
+    }
 
-	auto createInterfaceFunction = reinterpret_cast<CreateInterfaceFn>(createInterfaceAddress);
+    g_baseClient = create<IBaseClientDLL>(client, "VClient018");
+	g_entityList = create<IClientEntityList>(client, "VClientEntityList003");
 
-	auto interfaceInstance = reinterpret_cast<T*>(createInterfaceFunction(interfaceName.c_str(), nullptr));
-	if (!interfaceInstance) {
-		throw AmazingException("The create interface function failed, so no instance could be made of the requested interface");
-	}
+    g_convar = create<ICvar>(vstdlib, "VEngineCvar007");
 
-	return interfaceInstance;
+	g_mdlInfo = create<IVModelInfoClient>(engine, "VModelInfoClient004");
+	g_engineClient = create<IVEngineClient>(engine, "VClient018");
+	g_engineTrace = create<IEngineTrace>(engine, "EngineTraceClient004");
+
+    g_input = *reinterpret_cast<CInput**>(patternScan(client, "B9 ? ? ? ? 8B 40 38 FF D0 84 C0 0F 85") + 1);
+    g_player = *reinterpret_cast<C_LocalPlayer*>(patternScan(client, "8B 0D ? ? ? ? 83 FF FF 74 07") + 2);
+    g_globalVars = **reinterpret_cast<CGlobalVarsBase***>(patternScan(client, "A1 ? ? ? ? 5E 8B 40 10") + 1);
+}
+
+template <typename T>
+T* Interfaces::create(HMODULE moduleHandle, const std::string& interfaceName)
+{
+    auto createInterfaceAddress = GetProcAddress(moduleHandle, CREATE_INTERFACE);
+    if (!createInterfaceAddress) {
+        throw WinApiException("Getting the address to the create interface function failed");
+    }
+
+    auto createInterfaceFunction = reinterpret_cast<CreateInterfaceFn>(createInterfaceAddress);
+
+    auto interfaceInstance = reinterpret_cast<T*>(createInterfaceFunction(interfaceName.c_str(), nullptr));
+    if (!interfaceInstance) {
+        throw AmazingException("The create interface function failed, so no instance could be made of the requested interface");
+    }
+
+    return interfaceInstance;
+}
+
+unsigned char* Interfaces::patternScan(void* module, const char* signature)
+{
+    static auto pattern_to_byte = [](const char* pattern) {
+        auto bytes = std::vector<int>{};
+        auto start = const_cast<char*>(pattern);
+        auto end = const_cast<char*>(pattern) + strlen(pattern);
+
+        for (auto current = start; current < end; ++current) {
+            if (*current == '?') {
+                ++current;
+                if (*current == '?') {
+                    ++current;
+                }
+                bytes.push_back(-1);
+            }
+            else {
+                bytes.push_back(strtoul(current, &current, 16));
+            }
+        }
+        return bytes;
+    };
+
+    auto dosHeader = reinterpret_cast<PIMAGE_DOS_HEADER>(module);
+    auto ntHeaders = reinterpret_cast<PIMAGE_NT_HEADERS>(reinterpret_cast<unsigned char*>(module) + dosHeader->e_lfanew);
+
+    auto sizeOfImage = ntHeaders->OptionalHeader.SizeOfImage;
+    auto patternBytes = pattern_to_byte(signature);
+    auto scanBytes = reinterpret_cast<unsigned char*>(module);
+
+    auto size = patternBytes.size();
+    auto data = patternBytes.data();
+
+    for (size_t i = 0; i < sizeOfImage - size; ++i) {
+        auto found = true;
+        for (size_t j = 0; j < size; ++j) {
+            if (scanBytes[i + j] != data[j] && data[j] != -1) {
+                found = false;
+                break;
+            }
+        }
+        if (found) {
+            return &scanBytes[i];
+        }
+    }
+    return nullptr;
 }

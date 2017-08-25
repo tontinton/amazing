@@ -3,6 +3,9 @@
 #include "WinApiException.h"
 #include "AmazingException.h"
 #include "LoggerHelper.h"
+#include "IHooker.h"
+#include "InterfaceHooker.h"
+#include "CreateMoveHooker.h"
 
 
 constexpr DWORD MODULES_SLEEP_TIME = 1000;
@@ -37,7 +40,6 @@ void Surpriser::waitForModules(const std::vector<std::string>& modules, DWORD sl
     throw AmazingException("Waiting for modules has failed");
 }
 
-
 void Surpriser::start() const
 {
     m_logger.success("Starting the surprise flow");
@@ -49,6 +51,11 @@ void Surpriser::start() const
     try {
         Interfaces::init();
         m_logger.success("The interfaces have been initialized");
+
+	    auto& hooker = CreateMoveHooker::getInstance();
+        hooker.hook();
+
+        m_logger.success("Hooked the CreateMove() function");
     }
     catch (const WinApiException& exception) {
         auto lastError = GetLastError();

@@ -12,12 +12,6 @@
     <Filter Include="Package\Sdk">
       <UniqueIdentifier>{d9a17efc-851d-4309-87cc-484ee6162d2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Package\Bridges">
-      <UniqueIdentifier>{85530947-c721-4d90-84e6-77b096fc2601}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Package\Bridges\Interfaces">
-      <UniqueIdentifier>{b294f06a-34d8-4226-b4ce-df9d61e79a28}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Package\Exceptions">
       <UniqueIdentifier>{168452eb-e53d-48ce-974c-679ad609df1e}</UniqueIdentifier>
     </Filter>
@@ -35,6 +29,33 @@
     </Filter>
     <Filter Include="Package\Loggers\ConsoleLogger">
       <UniqueIdentifier>{f05004d4-9fbf-4ded-95a7-4ce2cfe2e5ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Interfaces">
+      <UniqueIdentifier>{b294f06a-34d8-4226-b4ce-df9d61e79a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Hooks">
+      <UniqueIdentifier>{650e2f61-a5f7-4d14-afe2-fb9283f0de7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Hooks\InterfaceHooker">
+      <UniqueIdentifier>{7aec5fbb-ceee-426e-b453-6adcd96c77c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Guards">
+      <UniqueIdentifier>{c9a2bbfa-73cb-4e04-96b7-ff1344b7a506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Guards\MemoryProtectGuard">
+      <UniqueIdentifier>{9d703a74-7eff-48e0-98cb-7cdabd060d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Hooks\Functions">
+      <UniqueIdentifier>{82708b98-50b8-49f4-ba4f-b96caa675e70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Hooks\Functions\CreateMoveHooker">
+      <UniqueIdentifier>{f3cb5550-9de8-4a97-9937-5868c80e6c8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Presents">
+      <UniqueIdentifier>{664b3a07-e6ec-415f-ad1f-94d1d0bca0e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Presents\BunnyHop">
+      <UniqueIdentifier>{c97ad401-b9cd-4369-a7a2-384522971127}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +93,7 @@
       <Filter>Package</Filter>
     </ClCompile>
     <ClCompile Include="Interfaces.cpp">
-      <Filter>Package\Bridges\Interfaces</Filter>
+      <Filter>Package\Interfaces</Filter>
     </ClCompile>
     <ClCompile Include="AmazingException.cpp">
       <Filter>Package\Exceptions\AmazingException</Filter>
@@ -88,6 +109,27 @@
     </ClCompile>
     <ClCompile Include="ConsoleLogger.cpp">
       <Filter>Package\Loggers\ConsoleLogger</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryProtectGuard.cpp">
+      <Filter>Package\Guards\MemoryProtectGuard</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceHooker.cpp">
+      <Filter>Package\Hooks\InterfaceHooker</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateMoveHooker.cpp">
+      <Filter>Package\Hooks\Functions\CreateMoveHooker</Filter>
+    </ClCompile>
+    <ClCompile Include="BunnyHopper.cpp">
+      <Filter>Package\Presents\BunnyHop</Filter>
+    </ClCompile>
+    <ClCompile Include="valve_sdk\csgostructs.cpp">
+      <Filter>Package\Sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="valve_sdk\netvars.cpp">
+      <Filter>Package\Sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="valve_sdk\helpers\math.cpp">
+      <Filter>Package\Sdk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,9 +301,6 @@
     <ClInclude Include="valve_sdk\math\VMatrix.hpp">
       <Filter>Package\Sdk</Filter>
     </ClInclude>
-    <ClInclude Include="Interfaces.h">
-      <Filter>Package\Bridges\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="AmazingException.h">
       <Filter>Package\Exceptions\AmazingException</Filter>
     </ClInclude>
@@ -279,6 +318,39 @@
     </ClInclude>
     <ClInclude Include="ConsoleLogger.h">
       <Filter>Package\Loggers\ConsoleLogger</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryProtectGuard.h">
+      <Filter>Package\Guards\MemoryProtectGuard</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceHooker.h">
+      <Filter>Package\Hooks\InterfaceHooker</Filter>
+    </ClInclude>
+    <ClInclude Include="IHooker.h">
+      <Filter>Package\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateMoveHooker.h">
+      <Filter>Package\Hooks\Functions\CreateMoveHooker</Filter>
+    </ClInclude>
+    <ClInclude Include="BunnyHopper.h">
+      <Filter>Package\Presents\BunnyHop</Filter>
+    </ClInclude>
+    <ClInclude Include="C_LocalPlayer.hpp">
+      <Filter>Package\Sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces.h">
+      <Filter>Package\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="valve_sdk\csgostructs.hpp">
+      <Filter>Package\Sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="valve_sdk\netvars.hpp">
+      <Filter>Package\Sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="valve_sdk\singleton.hpp">
+      <Filter>Package\Sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="valve_sdk\helpers\math.hpp">
+      <Filter>Package\Sdk</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
