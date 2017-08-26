@@ -6,6 +6,7 @@
 #include "InterfaceHooker.h"
 #include "IHooker.h"
 #include "CreateMoveHooker.h"
+#include "DoPostScreenEffectsHooker.h"
 
 
 constexpr DWORD MODULES_SLEEP_TIME = 1000;
@@ -55,9 +56,13 @@ void Surpriser::start() const
         NetvarSys::Get().Initialize();
         m_logger.success("Netvars have been initialized");
 
-		auto& hooker = CreateMoveHooker::getInstance();
-		hooker.hook();
+		auto& createMoveHooker = CreateMoveHooker::getInstance();
+		createMoveHooker.hook();
 		m_logger.success("Hooked the CreateMove() function");
+
+		auto& doPostScreenEffectsHooker = DoPostScreenEffectsHooker::getInstance();
+		doPostScreenEffectsHooker.hook();
+		m_logger.success("Hooked the DoPostScreenEffects() function");
 	}
 	catch (const WinApiException& exception) {
 		auto lastError = GetLastError();

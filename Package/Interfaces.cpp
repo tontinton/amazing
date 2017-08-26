@@ -19,6 +19,11 @@ ICvar* Interfaces::g_convar = nullptr;
 IVEngineClient* Interfaces::g_engineClient = nullptr;
 CInput* Interfaces::g_input = nullptr;
 CGlobalVarsBase* Interfaces::g_globalVars = nullptr;
+IClientMode* Interfaces::g_clientMode = nullptr;
+CGlowObjectManager* Interfaces::g_glowObjManager = nullptr;
+IVModelInfoClient* Interfaces::g_mdlInfo = nullptr;
+IEngineTrace* Interfaces::g_engineTrace = nullptr;
+
 C_LocalPlayer g_player;
 
 
@@ -34,9 +39,15 @@ void Interfaces::init()
 	g_convar = create<ICvar>(vstdlib, "VEngineCvar007");
 
 	g_engineClient = create<IVEngineClient>(engine, "VEngineClient014");
+	g_mdlInfo = create<IVModelInfoClient>(engine, "VModelInfoClient004");
+	g_engineTrace = create<IEngineTrace>(engine, "EngineTraceClient004");
 
 	g_input = *reinterpret_cast<CInput**>(patternScan(client, "B9 ? ? ? ? 8B 40 38 FF D0 84 C0 0F 85") + 1);
 	g_globalVars = **reinterpret_cast<CGlobalVarsBase***>(patternScan(client, "A1 ? ? ? ? 5E 8B 40 10") + 1);
+
+	g_clientMode = *reinterpret_cast<IClientMode**>(patternScan(client, "A1 ? ? ? ? 8B 80 ? ? ? ? 5D") + 1);
+
+	g_glowObjManager = *reinterpret_cast<CGlowObjectManager**>(patternScan(client, "0F 11 05 ? ? ? ? 83 C8 01") + 3);
 
 	g_player = *reinterpret_cast<C_LocalPlayer*>(patternScan(client, "8B 0D ? ? ? ? 83 FF FF 74 07") + 2);
 }

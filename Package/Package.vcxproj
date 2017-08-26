@@ -115,10 +115,14 @@
     <ClCompile Include="BunnyHopper.cpp" />
     <ClCompile Include="ConsoleLogger.cpp" />
     <ClCompile Include="CreateMoveHooker.cpp" />
+    <ClCompile Include="customstructs.cpp" />
+    <ClCompile Include="DoPostScreenEffectsHooker.cpp" />
+    <ClCompile Include="Glower.cpp" />
     <ClCompile Include="InterfaceHooker.cpp" />
     <ClCompile Include="Interfaces.cpp" />
     <ClCompile Include="LoggerHelper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="MemoryProtectGuard.cpp" />
     <ClCompile Include="netvars.cpp" />
     <ClCompile Include="Surpriser.cpp" />
@@ -136,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmazingException.h" />
+    <ClInclude Include="DoPostScreenEffectsHooker.h" />
+    <ClInclude Include="Glower.h" />
+    <ClInclude Include="Math.hpp" />
     <ClInclude Include="netvars.hpp" />
     <ClInclude Include="BunnyHopper.h" />
     <ClInclude Include="ConsoleLogger.h" />

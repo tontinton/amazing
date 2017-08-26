@@ -1,6 +1,5 @@
 #pragma once
 #include "IHooker.h"
-#include "InterfaceHooker.h"
 #include "BunnyHopper.h"
 
 class CreateMoveHooker

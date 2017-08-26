@@ -60,6 +60,12 @@
     <Filter Include="Package\Sdk\Other">
       <UniqueIdentifier>{fbfeb4db-04c3-4237-94e1-ffd13c8afade}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Package\Hooks\Functions\DoPostScreenEffectsHooker">
+      <UniqueIdentifier>{8a502998-668e-4747-a23c-99ad8a7a3f95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package\Presents\Glower">
+      <UniqueIdentifier>{41e677ad-18dc-45fa-98df-90c096196261}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="valve_sdk\misc\characterset.cpp">
@@ -126,6 +132,18 @@
       <Filter>Package\Presents\BunnyHop</Filter>
     </ClCompile>
     <ClCompile Include="netvars.cpp">
+      <Filter>Package\Sdk\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="DoPostScreenEffectsHooker.cpp">
+      <Filter>Package\Hooks\Functions\DoPostScreenEffectsHooker</Filter>
+    </ClCompile>
+    <ClCompile Include="Glower.cpp">
+      <Filter>Package\Presents\Glower</Filter>
+    </ClCompile>
+    <ClCompile Include="customstructs.cpp">
+      <Filter>Package\Sdk\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
       <Filter>Package\Sdk\Other</Filter>
     </ClCompile>
   </ItemGroup>
@@ -344,6 +362,15 @@
       <Filter>Package\Sdk\Other</Filter>
     </ClInclude>
     <ClInclude Include="singleton.hpp">
+      <Filter>Package\Sdk\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="DoPostScreenEffectsHooker.h">
+      <Filter>Package\Hooks\Functions\DoPostScreenEffectsHooker</Filter>
+    </ClInclude>
+    <ClInclude Include="Glower.h">
+      <Filter>Package\Presents\Glower</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.hpp">
       <Filter>Package\Sdk\Other</Filter>
     </ClInclude>
   </ItemGroup>

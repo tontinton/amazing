@@ -3,6 +3,7 @@
 #include "valve_sdk/interfaces/IClientEntity.hpp"
 #include "netvars.hpp"
 #include "valve_sdk/misc/EHandle.hpp"
+#include "Interfaces.h"
 
 
 #define NETVAR(type, name, table, netvar)                           \
@@ -223,7 +224,7 @@ class C_BasePlayer : public C_BaseEntity
 public:
 	static __forceinline C_BasePlayer* GetPlayerByUserId(int id)
 	{
-		return static_cast<C_BasePlayer*>(GetEntityByIndex(Interfaces::g_engineClient->GetPlayerForUserID(id)));
+		return static_cast<C_BasePlayer*>(GetEntityByIndex(Interfaces::Interfaces::g_engineClient->GetPlayerForUserID(id)));
 	}
 
 	static __forceinline C_BasePlayer* GetPlayerByIndex(int i)
@@ -231,28 +232,28 @@ public:
 		return static_cast<C_BasePlayer*>(GetEntityByIndex(i));
 	}
 
-	NETVAR(bool, m_bHasDefuser, "DT_CSPlayer", "m_bHasDefuser")
-	NETVAR(bool, m_bGunGameImmunity, "DT_CSPlayer", "m_bGunGameImmunity")
-	NETVAR(int32_t, m_iShotsFired, "DT_CSPlayer", "m_iShotsFired")
-	NETVAR(QAngle, m_angEyeAngles, "DT_CSPlayer", "m_angEyeAngles[0]")
-	NETVAR(int, m_ArmorValue, "DT_CSPlayer", "m_ArmorValue")
-	NETVAR(bool, m_bHasHelmet, "DT_CSPlayer", "m_bHasHelmet")
-	NETVAR(bool, m_bIsScoped, "DT_CSPlayer", "m_bIsScoped")
-	NETVAR(float, m_flLowerBodyYawTarget, "DT_CSPlayer", "m_flLowerBodyYawTarget")
-	NETVAR(int32_t, m_iHealth, "DT_BasePlayer", "m_iHealth")
-	NETVAR(int32_t, m_lifeState, "DT_BasePlayer", "m_lifeState")
-	NETVAR(int32_t, m_fFlags, "DT_BasePlayer", "m_fFlags")
-	NETVAR(int32_t, m_nTickBase, "DT_BasePlayer", "m_nTickBase")
-	NETVAR(Vector, m_vecViewOffset, "DT_BasePlayer", "m_vecViewOffset[0]")
-	NETVAR(QAngle, m_viewPunchAngle, "DT_BasePlayer", "m_viewPunchAngle")
-	NETVAR(QAngle, m_aimPunchAngle, "DT_BasePlayer", "m_aimPunchAngle")
-	NETVAR(CHandle<C_BaseViewModel>, m_hViewModel, "DT_BasePlayer", "m_hViewModel[0]")
-	NETVAR(Vector, m_vecVelocity, "DT_BasePlayer", "m_vecVelocity[0]")
-	NETVAR(float, m_flMaxspeed, "DT_BasePlayer", "m_flMaxspeed")
-	NETVAR(CHandle<C_BasePlayer>, m_hObserverTarget, "DT_BasePlayer", "m_hObserverTarget")
-	NETVAR(CHandle<C_BaseCombatWeapon>, m_hActiveWeapon, "DT_BaseCombatCharacter", "m_hActiveWeapon")
-	PNETVAR(CHandle<C_BaseCombatWeapon>, m_hMyWeapons, "DT_BaseCombatCharacter", "m_hMyWeapons")
-	PNETVAR(CHandle<C_BaseAttributableItem>, m_hMyWearables, "DT_BaseCombatCharacter", "m_hMyWearables")
+	NETVAR(bool, m_bHasDefuser, "DT_CSPlayer", "m_bHasDefuser");
+	NETVAR(bool, m_bGunGameImmunity, "DT_CSPlayer", "m_bGunGameImmunity");
+	NETVAR(int32_t, m_iShotsFired, "DT_CSPlayer", "m_iShotsFired");
+	NETVAR(QAngle, m_angEyeAngles, "DT_CSPlayer", "m_angEyeAngles[0]");
+	NETVAR(int, m_ArmorValue, "DT_CSPlayer", "m_ArmorValue");
+	NETVAR(bool, m_bHasHelmet, "DT_CSPlayer", "m_bHasHelmet");
+	NETVAR(bool, m_bIsScoped, "DT_CSPlayer", "m_bIsScoped");;
+	NETVAR(float, m_flLowerBodyYawTarget, "DT_CSPlayer", "m_flLowerBodyYawTarget");
+	NETVAR(int32_t, m_iHealth, "DT_BasePlayer", "m_iHealth");
+	NETVAR(int32_t, m_lifeState, "DT_BasePlayer", "m_lifeState");
+	NETVAR(int32_t, m_fFlags, "DT_BasePlayer", "m_fFlags");
+	NETVAR(int32_t, m_nTickBase, "DT_BasePlayer", "m_nTickBase");
+	NETVAR(Vector, m_vecViewOffset, "DT_BasePlayer", "m_vecViewOffset[0]");
+	NETVAR(QAngle, m_viewPunchAngle, "DT_BasePlayer", "m_viewPunchAngle");
+	NETVAR(QAngle, m_aimPunchAngle, "DT_BasePlayer", "m_aimPunchAngle");
+	NETVAR(CHandle<C_BaseViewModel>, m_hViewModel, "DT_BasePlayer", "m_hViewModel[0]");
+	NETVAR(Vector, m_vecVelocity, "DT_BasePlayer", "m_vecVelocity[0]");
+	NETVAR(float, m_flMaxspeed, "DT_BasePlayer", "m_flMaxspeed");
+	NETVAR(CHandle<C_BasePlayer>, m_hObserverTarget, "DT_BasePlayer", "m_hObserverTarget");
+	NETVAR(CHandle<C_BaseCombatWeapon>, m_hActiveWeapon, "DT_BaseCombatCharacter", "m_hActiveWeapon");
+	PNETVAR(CHandle<C_BaseCombatWeapon>, m_hMyWeapons, "DT_BaseCombatCharacter", "m_hMyWeapons");
+	PNETVAR(CHandle<C_BaseAttributableItem>, m_hMyWearables, "DT_BaseCombatCharacter", "m_hMyWearables");
 
 	CUserCmd*& m_pCurrentCommand();
 
