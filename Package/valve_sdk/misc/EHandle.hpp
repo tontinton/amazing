@@ -1,7 +1,6 @@
 #pragma once
 
 #include "BaseHandle.hpp"
-#include "../../Interfaces.h"
 
 // -------------------------------------------------------------------------------------------------- //
 // Game-code CBaseHandle implementation.

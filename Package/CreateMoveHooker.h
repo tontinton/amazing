@@ -9,7 +9,6 @@ public:
     static IHooker& getInstance();
     
 private:
-    static InterfaceHooker m_hooker;
     static ILogger& m_logger;
     static BunnyHopper m_bunnyHopper;
 

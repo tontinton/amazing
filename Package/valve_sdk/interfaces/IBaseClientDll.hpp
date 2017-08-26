@@ -2,6 +2,7 @@
 
 #include "../Misc/GlobalVars.hpp"
 #include "../Misc/ClientClass.hpp"
+#include "ISurface.hpp"
 
 enum ClientFrameStage_t
 {

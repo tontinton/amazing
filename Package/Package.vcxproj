@@ -31,7 +31,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -120,6 +120,7 @@
     <ClCompile Include="LoggerHelper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryProtectGuard.cpp" />
+    <ClCompile Include="netvars.cpp" />
     <ClCompile Include="Surpriser.cpp" />
     <ClCompile Include="valve_sdk\math\Vector2D.cpp" />
     <ClCompile Include="valve_sdk\math\Vector4D.cpp" />
@@ -135,15 +136,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmazingException.h" />
+    <ClInclude Include="netvars.hpp" />
     <ClInclude Include="BunnyHopper.h" />
     <ClInclude Include="ConsoleLogger.h" />
     <ClInclude Include="CreateMoveHooker.h" />
+    <ClInclude Include="customstructs.hpp" />
     <ClInclude Include="InterfaceHooker.h" />
     <ClInclude Include="IHooker.h" />
     <ClInclude Include="ILogger.h" />
     <ClInclude Include="Interfaces.h" />
     <ClInclude Include="LoggerHelper.h" />
     <ClInclude Include="MemoryProtectGuard.h" />
+    <ClInclude Include="singleton.hpp" />
     <ClInclude Include="Surpriser.h" />
     <ClInclude Include="valve_sdk\interfaces\CClientState.hpp" />
     <ClInclude Include="valve_sdk\interfaces\CInput.hpp" />

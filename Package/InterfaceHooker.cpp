@@ -1,7 +1,7 @@
 #include "InterfaceHooker.h"
 #include "ConsoleLogger.h"
 #include "MemoryProtectGuard.h"
-#include "../Amazing/AmazingException.h"
+#include "AmazingException.h"
 
 
 constexpr size_t WRONG_JUMP_ADDRESS = 0;
@@ -60,7 +60,7 @@ void InterfaceHooker::unhook()
         + ", From " + std::to_string(newFunctionAddress) + " To " + std::to_string(*m_detour));
 }
 
-void* InterfaceHooker::getOriginalFunction() const
+void* InterfaceHooker::getOriginalFunction()
 {
     if (WRONG_JUMP_ADDRESS == m_oldFunctionAddress) {
         throw AmazingException("Function is not hooked, so you cannot get the original function");

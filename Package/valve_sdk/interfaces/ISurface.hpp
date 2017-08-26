@@ -3,6 +3,8 @@
 #include "IAppSystem.hpp"
 #include "../Math/Vector2D.hpp"
 
+class Color;
+
 namespace vgui
 {
     typedef unsigned long HFont;

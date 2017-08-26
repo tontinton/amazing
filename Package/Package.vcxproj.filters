@@ -57,6 +57,9 @@
     <Filter Include="Package\Presents\BunnyHop">
       <UniqueIdentifier>{c97ad401-b9cd-4369-a7a2-384522971127}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Package\Sdk\Other">
+      <UniqueIdentifier>{fbfeb4db-04c3-4237-94e1-ffd13c8afade}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="valve_sdk\misc\characterset.cpp">
@@ -121,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="BunnyHopper.cpp">
       <Filter>Package\Presents\BunnyHop</Filter>
+    </ClCompile>
+    <ClCompile Include="netvars.cpp">
+      <Filter>Package\Sdk\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +336,15 @@
     </ClInclude>
     <ClInclude Include="valve_sdk\singleton.hpp">
       <Filter>Package\Sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="customstructs.hpp">
+      <Filter>Package\Sdk\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="netvars.hpp">
+      <Filter>Package\Sdk\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.hpp">
+      <Filter>Package\Sdk\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

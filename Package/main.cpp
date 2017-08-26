@@ -30,7 +30,7 @@ void WINAPI openSurprise()
 BOOL WINAPI DllMain(HINSTANCE, DWORD reason, LPVOID)
 {
     if (DLL_PROCESS_ATTACH == reason) {
-        if (!CreateThread(NULL, // Default thread attributes
+    	if (!CreateThread(NULL, // Default thread attributes
                           NULL, // Default stack size
                           reinterpret_cast<LPTHREAD_START_ROUTINE>(&openSurprise),
                           NULL, // No parameters

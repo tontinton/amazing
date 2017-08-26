@@ -11,9 +11,7 @@ public:
 
     void hook() override;
     void unhook() override;
-
-	void* getOriginalFunction() const;
-
+	void* getOriginalFunction() override;
 private:
     size_t* m_detour;
     size_t m_newFunctionAddress;

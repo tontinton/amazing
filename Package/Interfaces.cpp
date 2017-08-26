@@ -18,7 +18,8 @@ IClientEntityList* Interfaces::g_entityList = nullptr;
 ICvar* Interfaces::g_convar = nullptr;
 IVEngineClient* Interfaces::g_engineClient = nullptr;
 CInput* Interfaces::g_input = nullptr;
-C_LocalPlayer Interfaces::g_player;
+CGlobalVarsBase* Interfaces::g_globalVars = nullptr;
+C_LocalPlayer g_player;
 
 
 void Interfaces::init()
@@ -32,11 +33,12 @@ void Interfaces::init()
 
 	g_convar = create<ICvar>(vstdlib, "VEngineCvar007");
 
-	g_engineClient = create<IVEngineClient>(engine, "VClient018");
+	g_engineClient = create<IVEngineClient>(engine, "VEngineClient014");
 
 	g_input = *reinterpret_cast<CInput**>(patternScan(client, "B9 ? ? ? ? 8B 40 38 FF D0 84 C0 0F 85") + 1);
-	g_player = *reinterpret_cast<C_LocalPlayer*>(patternScan(client, "8B 0D ? ? ? ? 83 FF FF 74 07") + 2);
 	g_globalVars = **reinterpret_cast<CGlobalVarsBase***>(patternScan(client, "A1 ? ? ? ? 5E 8B 40 10") + 1);
+
+	g_player = *reinterpret_cast<C_LocalPlayer*>(patternScan(client, "8B 0D ? ? ? ? 83 FF FF 74 07") + 2);
 }
 
 HMODULE Interfaces::safeGetModuleHandle(const std::string& moduleName)
@@ -60,7 +62,7 @@ T* Interfaces::create(HMODULE moduleHandle, const std::string& interfaceName)
 
 	auto interfaceInstance = reinterpret_cast<T*>(createInterfaceFunction(interfaceName.c_str(), nullptr));
 	if (!interfaceInstance) {
-		throw AmazingException("The create interface function failed, so no instance could be made of the requested interface");
+		throw AmazingException("The create interface function failed, so no instance could be made of the requested interface: " + interfaceName);
 	}
 
 	return interfaceInstance;

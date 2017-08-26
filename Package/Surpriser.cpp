@@ -3,8 +3,8 @@
 #include "WinApiException.h"
 #include "AmazingException.h"
 #include "LoggerHelper.h"
-#include "IHooker.h"
 #include "InterfaceHooker.h"
+#include "IHooker.h"
 #include "CreateMoveHooker.h"
 
 
@@ -13,69 +13,71 @@ constexpr DWORD MODULES_TIMEOUT = 15000;
 
 
 Surpriser::Surpriser(ILogger& logger)
-    : m_logger(logger) {}
+	: m_logger(logger) {}
 
 
 void Surpriser::waitForModules(const std::vector<std::string>& modules, DWORD sleep, DWORD timeout)
 {
-    DWORD totalSleptTime = 0;
+	DWORD totalSleptTime = 0;
 
-    while (totalSleptTime < timeout) {
-        auto allModulesHaveLoaded = true;
-        for (auto&& module : modules) {
-            if (!GetModuleHandle(module.c_str())) {
-                allModulesHaveLoaded = false;
-                break;
-            }
-        }
+	while (totalSleptTime < timeout) {
+		auto allModulesHaveLoaded = true;
+		for (auto&& module : modules) {
+			if (!GetModuleHandle(module.c_str())) {
+				allModulesHaveLoaded = false;
+				break;
+			}
+		}
 
-        if (allModulesHaveLoaded) {
-            return;
-        }
+		if (allModulesHaveLoaded) {
+			return;
+		}
 
-        Sleep(sleep);
-        totalSleptTime += sleep;
-    }
+		Sleep(sleep);
+		totalSleptTime += sleep;
+	}
 
-    throw AmazingException("Waiting for modules has failed");
+	throw AmazingException("Waiting for modules has failed");
 }
 
 void Surpriser::start() const
 {
-    m_logger.success("Starting the surprise flow");
+	m_logger.success("Starting the surprise flow");
 
-    auto modules = std::vector<std::string>{"client.dll", "engine.dll"};
-    waitForModules(modules, MODULES_SLEEP_TIME, MODULES_TIMEOUT);
-    m_logger.success("The modules have loaded");
+	auto modules = std::vector<std::string>{"client.dll", "engine.dll"};
+	waitForModules(modules, MODULES_SLEEP_TIME, MODULES_TIMEOUT);
+	m_logger.success("The modules have loaded");
 
-    try {
-        Interfaces::init();
-        m_logger.success("The interfaces have been initialized");
+	try {
+		Interfaces::init();
+		m_logger.success("The interfaces have been initialized");
 
-	    auto& hooker = CreateMoveHooker::getInstance();
-        hooker.hook();
+        NetvarSys::Get().Initialize();
+        m_logger.success("Netvars have been initialized");
 
-        m_logger.success("Hooked the CreateMove() function");
-    }
-    catch (const WinApiException& exception) {
-        auto lastError = GetLastError();
-        auto message = std::string(exception.what())
-            + ", Error: "
-            + std::to_string(lastError)
-            + ", Message: "
-            + LoggerHelper::GetErrorMessage(lastError);
-        m_logger.error(message);
+		auto& hooker = CreateMoveHooker::getInstance();
+		hooker.hook();
+		m_logger.success("Hooked the CreateMove() function");
+	}
+	catch (const WinApiException& exception) {
+		auto lastError = GetLastError();
+		auto message = std::string(exception.what())
+			+ ", Error: "
+			+ std::to_string(lastError)
+			+ ", Message: "
+			+ LoggerHelper::GetErrorMessage(lastError);
+		m_logger.error(message);
 
-        return;
-    }
-    catch (const AmazingException& exception) {
-        m_logger.error(exception.what());
-        return;
-    }
-    catch (...) {
-        m_logger.error("Unknown exception");
-        return;
-    }
+		return;
+	}
+	catch (const AmazingException& exception) {
+		m_logger.error(exception.what());
+		return;
+	}
+	catch (...) {
+		m_logger.error("Unknown exception");
+		return;
+	}
 
-    m_logger.success("Everything worked :)");
+	m_logger.success("Everything worked :)");
 }
