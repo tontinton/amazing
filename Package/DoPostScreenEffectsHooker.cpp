@@ -1,3 +1,5 @@
+#ifndef NO_GLOWER
+
 #include "DoPostScreenEffectsHooker.h"
 #include "Interfaces.h"
 #include "InterfaceHooker.h"
@@ -23,3 +25,5 @@ void DoPostScreenEffectsHooker::DoPostScreenEffectsProxy(int a1)
 
 	(originalCreateMove)(Interfaces::g_clientMode, a1);
 }
+
+#endif

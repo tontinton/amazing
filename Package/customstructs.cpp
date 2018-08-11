@@ -43,7 +43,7 @@ CCSWeaponInfo* C_BaseCombatWeapon::GetCSWeaponData()
 {
     static auto fnGetWpnData
         = reinterpret_cast<CCSWeaponInfo*(__thiscall*)(void*)>(
-            Interfaces::patternScan(GetModuleHandleW(L"client.dll"), "55 8B EC 81 EC ? ? ? ? 53 8B D9 56 57 8D 8B")
+            Interfaces::patternScan(GetModuleHandleW(L"client_panorama.dll"), "55 8B EC 81 EC ? ? ? ? 53 8B D9 56 57 8D 8B")
         );
     return fnGetWpnData(this);
 }
@@ -114,7 +114,7 @@ bool C_BaseCombatWeapon::IsSniper()
 
 bool C_BaseCombatWeapon::IsReloading()
 {
-    static auto inReload = *(uint32_t*)(Interfaces::patternScan(GetModuleHandleW(L"client.dll"), "C6 87 ? ? ? ? ? 8B 06 8B CE FF 90") + 2);
+    static auto inReload = *(uint32_t*)(Interfaces::patternScan(GetModuleHandleW(L"client_panorama.dll"), "C6 87 ? ? ? ? ? 8B 06 8B CE FF 90") + 2);
     return *(bool*)((uintptr_t)this + inReload);
 }
 
@@ -135,7 +135,7 @@ void C_BaseCombatWeapon::UpdateAccuracyPenalty()
 
 CUserCmd*& C_BasePlayer::m_pCurrentCommand()
 {
-    static auto currentCommand = *(uint32_t*)(Interfaces::patternScan(GetModuleHandleW(L"client.dll"), "89 BE ? ? ? ? E8 ? ? ? ? 85 FF") + 2);
+    static auto currentCommand = *(uint32_t*)(Interfaces::patternScan(GetModuleHandleW(L"client_panorama.dll"), "89 BE ? ? ? ? E8 ? ? ? ? 85 FF") + 2);
     return *(CUserCmd**)((uintptr_t)this + currentCommand);
 }
 
@@ -160,7 +160,7 @@ bool C_BasePlayer::HasC4()
 {
     static auto fnHasC4
         = reinterpret_cast<bool(__thiscall*)(void*)>(
-            Interfaces::patternScan(GetModuleHandleW(L"client.dll"), "56 8B F1 85 F6 74 31")
+            Interfaces::patternScan(GetModuleHandleW(L"client_panorama.dll"), "56 8B F1 85 F6 74 31")
         );
 
     return fnHasC4(this);

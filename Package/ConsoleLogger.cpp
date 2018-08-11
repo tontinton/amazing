@@ -55,7 +55,7 @@ ConsoleLogger::~ConsoleLogger()
 
 ILogger& ConsoleLogger::getInstance()
 {
-    static ConsoleLogger instance;
+	static ConsoleLogger instance{};
     return instance;
 }
 

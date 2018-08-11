@@ -5,8 +5,14 @@
 #include "LoggerHelper.h"
 #include "InterfaceHooker.h"
 #include "IHooker.h"
+
+#ifndef NO_BUNNY_HOP
 #include "CreateMoveHooker.h"
+#endif
+
+#ifndef NO_GLOWER
 #include "DoPostScreenEffectsHooker.h"
+#endif
 
 
 constexpr DWORD MODULES_SLEEP_TIME = 1000;
@@ -43,26 +49,30 @@ void Surpriser::waitForModules(const std::vector<std::string>& modules, DWORD sl
 
 void Surpriser::start() const
 {
-	m_logger.success("Starting the surprise flow");
-
-	auto modules = std::vector<std::string>{"client.dll", "engine.dll"};
-	waitForModules(modules, MODULES_SLEEP_TIME, MODULES_TIMEOUT);
-	m_logger.success("The modules have loaded");
-
 	try {
+		m_logger.success("Starting the surprise flow");
+
+		auto modules = std::vector<std::string>{ "client_panorama.dll", "engine.dll" };
+		waitForModules(modules, MODULES_SLEEP_TIME, MODULES_TIMEOUT);
+		m_logger.success("The modules have loaded");
+
 		Interfaces::init();
 		m_logger.success("The interfaces have been initialized");
 
         NetvarSys::Get().Initialize();
         m_logger.success("Netvars have been initialized");
 
+#ifndef NO_BUNNY_HOP
 		auto& createMoveHooker = CreateMoveHooker::getInstance();
 		createMoveHooker.hook();
 		m_logger.success("Hooked the CreateMove() function");
+#endif
 
+#ifndef NO_GLOWER
 		auto& doPostScreenEffectsHooker = DoPostScreenEffectsHooker::getInstance();
 		doPostScreenEffectsHooker.hook();
 		m_logger.success("Hooked the DoPostScreenEffects() function");
+#endif
 	}
 	catch (const WinApiException& exception) {
 		auto lastError = GetLastError();

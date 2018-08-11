@@ -1,5 +1,4 @@
 #include <windows.h>
-#include "WinApiException.h"
 #include "Surpriser.h"
 #include "ILogger.h"
 #include "ConsoleLogger.h"
@@ -14,15 +13,16 @@ void WINAPI openSurprise()
         auto surpriser = Surpriser{logger};
         surpriser.start();
     }
-    catch (const WinApiException& exception) {
-        auto lastError = GetLastError();
-        auto message = std::string(exception.what())
-            + ", Error: "
-            + std::to_string(lastError)
-            + ", Message: "
-            + LoggerHelper::GetErrorMessage(lastError);
-        MessageBox(NULL, message.c_str(), "Package", MB_OK);
-    } catch(...) {
+	catch (const std::exception& exception) {
+		auto lastError = GetLastError();
+		auto message = std::string(exception.what())
+			+ ", Error: "
+			+ std::to_string(lastError)
+			+ ", Message: "
+			+ LoggerHelper::GetErrorMessage(lastError);
+		MessageBox(NULL, message.c_str(), "Package", MB_OK);
+	}
+	catch (...) {
         MessageBox(NULL, "Unknown Error", "Package", MB_OK);
     }
 }

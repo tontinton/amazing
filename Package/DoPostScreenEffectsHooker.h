@@ -1,4 +1,7 @@
 #pragma once
+
+#ifndef NO_GLOWER
+
 #include "IHooker.h"
 #include "ILogger.h"
 
@@ -12,3 +15,5 @@ private:
 
 	static void __stdcall DoPostScreenEffectsProxy(int a1);
 };
+
+#endif

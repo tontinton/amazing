@@ -7,7 +7,7 @@
 
 constexpr char* CREATE_INTERFACE = "CreateInterface";
 
-constexpr char* CLIENT = "client.dll";
+constexpr char* CLIENT = "client_panorama.dll";
 constexpr char* ENGINE = "engine.dll";
 constexpr char* DATA_CACHE = "datacache.dll";
 constexpr char* V_STD_LIB = "vstdlib.dll";

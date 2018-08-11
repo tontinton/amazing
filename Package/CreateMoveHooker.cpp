@@ -1,3 +1,5 @@
+#ifndef NO_BUNNY_HOP
+
 #include "CreateMoveHooker.h"
 #include "Interfaces.h"
 #include "InterfaceHooker.h"
@@ -63,3 +65,5 @@ void __stdcall CreateMoveHooker::CreateMove(int sequence_number, float input_sam
         m_logger.warning(exception.what());
     }
 }
+
+#endif

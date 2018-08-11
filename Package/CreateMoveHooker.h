@@ -1,6 +1,10 @@
 #pragma once
+
+#ifndef NO_BUNNY_HOP
+
 #include "IHooker.h"
 #include "BunnyHopper.h"
+#include "ILogger.h"
 
 class CreateMoveHooker
 {
@@ -14,3 +18,5 @@ private:
     static void __stdcall CreateMoveProxy(int sequence_number, float input_sample_frametime, bool active);
     static void __stdcall CreateMove(int sequence_number, float input_sample_frametime, bool active, bool& bSendPacket);
 };
+
+#endif
