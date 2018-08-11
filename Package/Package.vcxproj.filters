@@ -66,9 +66,6 @@
     <Filter Include="Package\Presents\Glower">
       <UniqueIdentifier>{41e677ad-18dc-45fa-98df-90c096196261}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Package\Loggers\MockLogger">
-      <UniqueIdentifier>{5de84cde-97f1-4b06-92fb-ffa5953e67bf}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="valve_sdk\misc\characterset.cpp">
@@ -148,9 +145,6 @@
     </ClCompile>
     <ClCompile Include="Math.cpp">
       <Filter>Package\Sdk\Other</Filter>
-    </ClCompile>
-    <ClCompile Include="MockLogger.cpp">
-      <Filter>Package\Loggers\MockLogger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -378,9 +372,6 @@
     </ClInclude>
     <ClInclude Include="Math.hpp">
       <Filter>Package\Sdk\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="MockLogger.h">
-      <Filter>Package\Loggers\MockLogger</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

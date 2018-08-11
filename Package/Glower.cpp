@@ -62,9 +62,6 @@ void Glower::glow()
 			entity->m_bShouldGlow() = true;
 			color = color_glow_chickens;
 			break;
-		case ClassId_CBaseAnimating:
-			color = color_glow_defuse;
-			break;
 		case ClassId_CPlantedC4:
 			color = color_glow_planted_c4;
 			break;

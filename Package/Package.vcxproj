@@ -128,7 +128,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="MemoryProtectGuard.cpp" />
-    <ClCompile Include="MockLogger.cpp" />
     <ClCompile Include="netvars.cpp" />
     <ClCompile Include="Surpriser.cpp" />
     <ClCompile Include="valve_sdk\math\Vector2D.cpp" />
@@ -148,7 +147,6 @@
     <ClInclude Include="DoPostScreenEffectsHooker.h" />
     <ClInclude Include="Glower.h" />
     <ClInclude Include="Math.hpp" />
-    <ClInclude Include="MockLogger.h" />
     <ClInclude Include="netvars.hpp" />
     <ClInclude Include="BunnyHopper.h" />
     <ClInclude Include="ConsoleLogger.h" />
