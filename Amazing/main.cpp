@@ -13,7 +13,7 @@ int main(void)
 
 	try {
 		std::unique_ptr<IInjector> injector = std::make_unique<DllInjector>("csgo.exe");
-		injector->inject("C:\\Users\\Tony Solomonik\\Documents\\visual studio 2015\\Projects\\Amazing\\Debug\\Package.dll");
+		injector->inject("Package.dll");
 	}
 	catch (const WinApiException& exception) {
 		logger.error(exception.what());
