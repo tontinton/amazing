@@ -11,7 +11,7 @@ OPTION(Color, color_glow_c4_carrier, Color(255, 255, 0));
 OPTION(Color, color_glow_planted_c4, Color(128, 0, 128));
 OPTION(Color, color_glow_defuse, Color(255, 255, 255));
 OPTION(Color, color_glow_weapons, Color(255, 128, 0));
-OPTION(Color, color_glow_default, Color(255, 255, 255));
+OPTION(Color, color_glow_default, color_glow_weapons);
 
 void Glower::glow()
 {
