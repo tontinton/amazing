@@ -4,15 +4,6 @@
 
 #define OPTION(type, var, val) type var = val
 
-OPTION(Color, color_esp_ally_visible, Color(0, 128, 255));
-OPTION(Color, color_esp_enemy_visible, Color(255, 0, 0));
-OPTION(Color, color_esp_ally_occluded, Color(0, 128, 255));
-OPTION(Color, color_esp_enemy_occluded, Color(255, 0, 0));
-OPTION(Color, color_esp_crosshair, Color(255, 255, 255));
-OPTION(Color, color_esp_weapons, Color(128, 0, 128));
-OPTION(Color, color_esp_defuse, Color(0, 128, 255));
-OPTION(Color, color_esp_c4, Color(255, 255, 0));
-
 OPTION(Color, color_glow_ally, Color(0, 128, 255));
 OPTION(Color, color_glow_enemy, Color(255, 0, 0));
 OPTION(Color, color_glow_chickens, Color(0, 128, 0));
@@ -20,14 +11,7 @@ OPTION(Color, color_glow_c4_carrier, Color(255, 255, 0));
 OPTION(Color, color_glow_planted_c4, Color(128, 0, 128));
 OPTION(Color, color_glow_defuse, Color(255, 255, 255));
 OPTION(Color, color_glow_weapons, Color(255, 128, 0));
-
-OPTION(Color, color_chams_player_ally_visible, Color(0, 128, 255));
-OPTION(Color, color_chams_player_ally_occluded, Color(0, 255, 128));
-OPTION(Color, color_chams_player_enemy_visible, Color(255, 0, 0));
-OPTION(Color, color_chams_player_enemy_occluded, Color(255, 128, 0));
-OPTION(Color, color_chams_arms_visible, Color(0, 128, 255));
-OPTION(Color, color_chams_arms_occluded, Color(0, 128, 255));
-
+OPTION(Color, color_glow_default, Color(255, 255, 255));
 
 void Glower::glow()
 {
@@ -42,7 +26,7 @@ void Glower::glow()
 			continue;
 
 		auto class_id = entity->GetClientClass()->m_ClassID;
-		auto color = Color{};
+		auto color = color_glow_default;
 
 		switch (class_id) {
 		case ClassId_CCSPlayer:

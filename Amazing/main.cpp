@@ -5,6 +5,7 @@
 #include "DllInjector.h"
 #include "AmazingException.h"
 #include "WinApiException.h"
+#include <filesystem>
 
 
 int main(void)
@@ -13,7 +14,8 @@ int main(void)
 
 	try {
 		std::unique_ptr<IInjector> injector = std::make_unique<DllInjector>("csgo.exe");
-		injector->inject("Package.dll");
+		const auto& packagePath = std::experimental::filesystem::current_path() / "Package.dll";
+		injector->inject(packagePath.string());
 	}
 	catch (const WinApiException& exception) {
 		logger.error(exception.what());

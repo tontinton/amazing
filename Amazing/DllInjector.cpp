@@ -55,7 +55,7 @@ void DllInjector::inject(const std::string& path)
 	auto pathBuffer = path.c_str();
 	auto pathSize = strlen(pathBuffer) + 1;
 
-	RemoteMemoryGuard remoteMemory(*remoteProcess, LET_WINDOWS_DECIDE_ADDRESS, pathSize, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+	RemoteMemoryGuard remoteMemory(*remoteProcess, LET_WINDOWS_DECIDE_ADDRESS, pathSize, MEM_COMMIT, PAGE_READWRITE);
 	m_logger.success("Allocated memory in the remote process: " + std::to_string(reinterpret_cast<DWORD>(*remoteMemory)));
 
 
