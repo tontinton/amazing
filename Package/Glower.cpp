@@ -29,7 +29,7 @@ void Glower::glow()
 		auto color = color_glow_default;
 
 		switch (class_id) {
-		case ClassId_CCSPlayer:
+		case ClassId_CCSPlayer4:
 			{
 				auto is_enemy = entity->m_iTeamNum() != g_player->m_iTeamNum();
 
@@ -56,6 +56,9 @@ void Glower::glow()
 				}
 			}
 		}
+
+		//if (color == color_glow_default)
+		//	continue;
 
 		glowObject.m_flRed = color.r() / 255.0f;
 		glowObject.m_flGreen = color.g() / 255.0f;

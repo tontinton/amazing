@@ -45,7 +45,7 @@ void Interfaces::init()
 	g_input = *reinterpret_cast<CInput**>(patternScan(client, "B9 ? ? ? ? 8B 40 38 FF D0 84 C0 0F 85") + 1);
 	g_globalVars = **reinterpret_cast<CGlobalVarsBase***>(patternScan(client, "A1 ? ? ? ? 5E 8B 40 10") + 1);
 
-	g_clientMode = *reinterpret_cast<IClientMode**>(patternScan(client, "A1 ? ? ? ? 8B 80 ? ? ? ? 5D") + 1);
+	g_clientMode = *reinterpret_cast<IClientMode**>(patternScan(client, "A1 ? ? ? ? 8B 80 ? ? ? ? FF") + 1);
 
 	g_glowObjManager = *reinterpret_cast<CGlowObjectManager**>(patternScan(client, "0F 11 05 ? ? ? ? 83 C8 01") + 3);
 

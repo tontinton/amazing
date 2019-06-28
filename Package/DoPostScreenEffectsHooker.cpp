@@ -6,7 +6,7 @@
 #include "Glower.h"
 
 
-constexpr size_t DO_POST_SCREEN_EFFECTS_INDEX = 44;
+constexpr size_t DO_POST_SCREEN_EFFECTS_INDEX = 52;
 using DoPostScreenEffectsHeader = int(__thiscall*)(IClientMode*, int);
 
 
