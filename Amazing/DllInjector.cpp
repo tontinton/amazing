@@ -8,12 +8,17 @@
 #include "ColorConsoleLogger.h"
 #include "RemoteMemoryGuard.h"
 #include "RemoteThreadGuard.h"
+#include "RemotePatchGuard.h"
 
 
 LPVOID LET_WINDOWS_DECIDE_ADDRESS = NULL;
 
 constexpr char* KERNEL_MODULE = "kernel32";
 constexpr char* LOAD_LIBRARY_A = "LoadLibraryA";
+
+constexpr char* NTDLL_MODULE = "ntdll";
+constexpr char* NT_OPEN_FILE = "NtOpenFile";
+
 
 
 DllInjector::DllInjector(const std::string& processName)
@@ -52,18 +57,30 @@ void DllInjector::inject(const std::string& path)
 	m_logger.success("Received the remote process by it's pid");
 
 
+	LPVOID ntOpenFile = GetProcAddress(LoadLibrary(TEXT(NTDLL_MODULE)), NT_OPEN_FILE);
+	if (!ntOpenFile) {
+		throw WinApiException("Getting address of NtOpenFile failed with error code: " + std::to_string(GetLastError()));
+	}
+
+	char preValveHookBytes[5];
+	memcpy(preValveHookBytes, ntOpenFile, sizeof(preValveHookBytes));
+
+	RemotePatchGuard trustModePatch(*remoteProcess, ntOpenFile, preValveHookBytes);
+	m_logger.success("Patched trust mode in the remote process");
+
+
 	auto pathBuffer = path.c_str();
 	auto pathSize = strlen(pathBuffer) + 1;
 
 	RemoteMemoryGuard remoteMemory(*remoteProcess, LET_WINDOWS_DECIDE_ADDRESS, pathSize, MEM_COMMIT, PAGE_READWRITE);
-	m_logger.success("Allocated memory in the remote process: " + std::to_string(reinterpret_cast<DWORD>(*remoteMemory)));
+	m_logger.success("Allocated memory in the remote process: " + std::to_string(reinterpret_cast<size_t>(*remoteMemory)));
 
 
-	DWORD numberOfBytesWritten = 0;
+	SIZE_T numberOfBytesWritten = 0;
 	if (!WriteProcessMemory(*remoteProcess, *remoteMemory, pathBuffer, pathSize, &numberOfBytesWritten) ||
 		pathSize != numberOfBytesWritten) {
 
-		throw WinApiException("Writing memory to remote process failed with error code: " + std::to_string(GetLastError()));
+		throw WinApiException("Writing the library's path to the remote process failed with error code: " + std::to_string(GetLastError()));
 	}
 	m_logger.success("Wrote the dll path to the remote process: " + path);
 

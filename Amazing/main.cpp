@@ -14,7 +14,7 @@ int main(void)
 
 	try {
 		std::unique_ptr<IInjector> injector = std::make_unique<DllInjector>("csgo.exe");
-		const auto& packagePath = std::experimental::filesystem::current_path() / "Package.dll";
+		const auto& packagePath = std::filesystem::current_path() / "Package.dll";
 		injector->inject(packagePath.string());
 	}
 	catch (const WinApiException& exception) {

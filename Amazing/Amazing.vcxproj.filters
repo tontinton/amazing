@@ -51,6 +51,9 @@
     <Filter Include="Delivery\Exceptions\AmazingException">
       <UniqueIdentifier>{7f215361-e893-4f98-8ffe-e3f092831289}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Delivery\Guards\MemoryGuards\RemotePatchGuard">
+      <UniqueIdentifier>{0e18732d-c26a-45e4-a532-d459d6b6227e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -114,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="AmazingException.h">
       <Filter>Delivery\Exceptions\AmazingException</Filter>
+    </ClInclude>
+    <ClInclude Include="RemotePatchGuard.h">
+      <Filter>Delivery\Guards\MemoryGuards\RemotePatchGuard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
