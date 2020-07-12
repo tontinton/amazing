@@ -14,13 +14,13 @@ public:
 
 private:
 	HANDLE m_process;
-	LPVOID m_remoteAddress = address;
-	char m_originalBytes[Size];
+	LPVOID m_remoteAddress;
+	char m_originalBytes[Size]{};
 	ILogger& m_logger;
 };
 
 template<size_t Size>
-inline RemotePatchGuard<Size>::RemotePatchGuard(HANDLE process, LPVOID remoteAddress, char(&patchBytes)[Size])
+RemotePatchGuard<Size>::RemotePatchGuard(HANDLE process, LPVOID remoteAddress, char(&patchBytes)[Size])
 	: m_process(process),
 	m_remoteAddress(remoteAddress),
 	m_logger(ColorConsoleLogger::getInstance())
@@ -40,7 +40,7 @@ inline RemotePatchGuard<Size>::RemotePatchGuard(HANDLE process, LPVOID remoteAdd
 }
 
 template<size_t Size>
-inline RemotePatchGuard<Size>::~RemotePatchGuard()
+RemotePatchGuard<Size>::~RemotePatchGuard()
 {
 	SIZE_T numberOfBytes = 0;
 	if (!WriteProcessMemory(m_process, m_remoteAddress, m_originalBytes, Size, &numberOfBytes) ||

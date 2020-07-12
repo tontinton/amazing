@@ -18,7 +18,7 @@ constexpr char* LOAD_LIBRARY_A = "LoadLibraryA";
 
 constexpr char* NTDLL_MODULE = "ntdll";
 constexpr char* NT_OPEN_FILE = "NtOpenFile";
-
+constexpr size_t TRUST_MODE_HOOK_LENGTH = 5;
 
 
 DllInjector::DllInjector(const std::string& processName)
@@ -62,7 +62,7 @@ void DllInjector::inject(const std::string& path)
 		throw WinApiException("Getting address of NtOpenFile failed with error code: " + std::to_string(GetLastError()));
 	}
 
-	char preValveHookBytes[5];
+	char preValveHookBytes[TRUST_MODE_HOOK_LENGTH];
 	memcpy(preValveHookBytes, ntOpenFile, sizeof(preValveHookBytes));
 
 	RemotePatchGuard trustModePatch(*remoteProcess, ntOpenFile, preValveHookBytes);
