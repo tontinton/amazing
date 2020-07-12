@@ -52,7 +52,7 @@ void Surpriser::start() const
 	try {
 		m_logger.success("Starting the surprise flow");
 
-		auto modules = std::vector<std::string>{ "client_panorama.dll", "engine.dll" };
+		auto modules = std::vector<std::string>{ "client.dll", "engine.dll" };
 		waitForModules(modules, MODULES_SLEEP_TIME, MODULES_TIMEOUT);
 		m_logger.success("The modules have loaded");
 
